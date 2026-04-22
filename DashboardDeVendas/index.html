@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexStore Analytics — Dashboard de Vendas</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<!-- ── Topbar ── -->
+<header class="topbar">
+  <div class="logo">
+    <div class="logo-icon">
+    </div>
+    <div>
+      <div class="logo-name">NexStore Analytics</div>
+      <div class="logo-sub">Dashboard de Vendas</div>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Navegação principal">
+    <button class="tab active">Visão Geral</button>
+    <button class="tab">Produtos</button>
+    <button class="tab">Clientes</button>
+    <button class="tab">Campanhas</button>
+  </nav>
+
+  <div class="topbar-right">
+    <div class="period-picker">
+      <select id="periodSelect" aria-label="Período de análise">
+        <option>Últimos 30 dias</option>
+        <option>Últimos 90 dias</option>
+        <option>Este ano</option>
+      </select>
+    </div>
+    <div class="avatar" aria-label="Usuário NS">NS</div>
+  </div>
+</header>
+
+<!-- ── Body ── -->
+<main class="body">
+  <h2 class="section-label">Indicadores Principais</h2>
+
+  <!-- Indicadores -->
+  <div class="kpi-grid">
+
+    <div class="kpi-card blue">
+      <div class="kpi-header">
+        <span class="kpi-label">Receita Total</span>
+      </div>
+      <div class="kpi-value">R$ 284,9K</div>
+      <div class="kpi-delta up">
+        +12,4% <span>vs mês anterior</span>
+      </div>
+    </div>
+
+    <div class="kpi-card green">
+      <div class="kpi-header">
+        <span class="kpi-label">Pedidos</span>
+      </div>
+      <div class="kpi-value">3.847</div>
+      <div class="kpi-delta up">
+        +8,1% <span>vs mês anterior</span>
+      </div>
+    </div>
+
+    <div class="kpi-card amber">
+      <div class="kpi-header">
+        <span class="kpi-label">Ticket Médio</span>
+      </div>
+      <div class="kpi-value">R$ 74,10</div>
+      <div class="kpi-delta up">
+        +3,8% <span>vs mês anterior</span>
+      </div>
+    </div>
+
+    <div class="kpi-card rose">
+      <div class="kpi-header">
+        <span class="kpi-label">Taxa de Churn</span>
+      </div>
+      <div class="kpi-value">2,3%</div>
+      <div class="kpi-delta down">
+        -0,4pp <span>vs mês anterior</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Grafico de Barras -->
+  <div class="charts-row">
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Receita &amp; Pedidos — Últimos 12 Meses</div>
+          <div class="chart-sub">Comparativo mensal de faturamento e volume</div>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>Receita</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div>Pedidos</div>
+        </div>
+      </div>
+      <div style="position:relative;width:100%;height:240px;">
+        <canvas id="mainChart" role="img" aria-label="Gráfico de barras com receita mensal e linha de pedidos dos últimos 12 meses">Receita variou de R$198K a R$292K. Pedidos variaram de 2.810 a 3.920 unidades.</canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Canais de Venda</div>
+          <div class="chart-sub">Distribuição por origem</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;position:relative;height:170px;">
+        <canvas id="doughnutChart" role="img" aria-label="Gráfico de rosca com canais de venda">Orgânico 38%, Pago 27%, Direto 20%, Social 15%.</canvas>
+      </div>
+      <div class="legend-grid">
+        <div class="legend-item"><div class="legend-dot" style="background:#3b82f6;width:10px;height:10px;"></div><span style="font-size:12px;">Orgânico 38%</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#22c55e;width:10px;height:10px;"></div><span style="font-size:12px;">Pago 27%</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;width:10px;height:10px;"></div><span style="font-size:12px;">Direto 20%</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f43f5e;width:10px;height:10px;"></div><span style="font-size:12px;">Social 15%</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- demostrativo -->
+  <div class="bottom-row">
+
+    <div class="table-card">
+      <div class="chart-header" style="margin-bottom:14px;">
+        <div class="chart-title">Top Produtos</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Vendas</th>
+            <th>Receita</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Tênis Runner Pro</td><td class="mono">842</td><td class="mono">R$63,1K</td><td><span class="badge high">Alto</span></td></tr>
+          <tr><td class="name">Mochila Urban X</td><td class="mono">631</td><td class="mono">R$47,3K</td><td><span class="badge high">Alto</span></td></tr>
+          <tr><td class="name">Camiseta Dry Fit</td><td class="mono">519</td><td class="mono">R$20,7K</td><td><span class="badge med">Médio</span></td></tr>
+          <tr><td class="name">Shorts Treino</td><td class="mono">387</td><td class="mono">R$19,3K</td><td><span class="badge med">Médio</span></td></tr>
+          <tr><td class="name">Meias Compressão</td><td class="mono">294</td><td class="mono">R$8,8K</td><td><span class="badge low">Baixo</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <div class="chart-header" style="margin-bottom:16px;">
+        <div class="chart-title">Receita por Região</div>
+      </div>
+      <div class="bar-list">
+        <div>
+          <div class="bar-top"><span class="bar-name">Sudeste</span><span class="bar-val">R$112,4K</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#3b82f6;"></div></div>
+        </div>
+        <div>
+          <div class="bar-top"><span class="bar-name">Sul</span><span class="bar-val">R$68,9K</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:61%;background:#3b82f6;"></div></div>
+        </div>
+        <div>
+          <div class="bar-top"><span class="bar-name">Nordeste</span><span class="bar-val">R$51,2K</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:46%;background:#3b82f6;"></div></div>
+        </div>
+        <div>
+          <div class="bar-top"><span class="bar-name">Centro-Oeste</span><span class="bar-val">R$31,7K</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:28%;background:#22c55e;"></div></div>
+        </div>
+        <div>
+          <div class="bar-top"><span class="bar-name">Norte</span><span class="bar-val">R$20,7K</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:18%;background:#22c55e;"></div></div>
+        </div>
+      </div>
+
+      <div class="funnel-section">
+        <div class="funnel-label">Funil de Conversão</div>
+        <div class="funnel">
+          <div class="funnel-step">
+            <div class="funnel-num" style="color:#3b82f6;">24,1K</div>
+            <div class="funnel-txt">Visitas</div>
+          </div>
+          <div class="funnel-arr">›</div>
+          <div class="funnel-step">
+            <div class="funnel-num" style="color:#f59e0b;">7,3K</div>
+            <div class="funnel-txt">Carrinho</div>
+          </div>
+          <div class="funnel-arr">›</div>
+          <div class="funnel-step">
+            <div class="funnel-num" style="color:#22c55e;">3,8K</div>
+            <div class="funnel-txt">Pedidos</div>
+          </div>
+          <div class="funnel-arr">›</div>
+          <div class="funnel-step">
+            <div class="funnel-num" style="color:#f43f5e;">15,9%</div>
+            <div class="funnel-txt">Conversão</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+    <!--JavaScript alimentando os dados dos graficos-->
+<script src="chart.js"></script>
+<script>
+  // ── Main bar + line chart ──
+  const months  = ['Mai','Jun','Jul','Ago','Set','Out','Nov','Dez','Jan','Fev','Mar','Abr'];
+  const revenue = [198, 215, 231, 224, 249, 261, 238, 255, 270, 263, 284, 292];
+  const orders  = [2810,3020,3250,3100,3480,3610,3290,3520,3780,3640,3847,3920];
+
+  new Chart(document.getElementById('mainChart'), {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: 'Receita (K)',
+          data: revenue,
+          backgroundColor: 'rgba(59,130,246,0.7)',
+          borderColor: '#3b82f6',
+          borderWidth: 0,
+          borderRadius: 4,
+          yAxisID: 'y',
+        },
+        {
+          label: 'Pedidos',
+          data: orders,
+          type: 'line',
+          borderColor: '#22c55e',
+          backgroundColor: 'rgba(34,197,94,0.08)',
+          borderWidth: 2,
+          pointRadius: 3,
+          pointBackgroundColor: '#22c55e',
+          fill: true,
+          tension: 0.4,
+          yAxisID: 'y1',
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1e2130',
+          titleColor: '#e2e4ea',
+          bodyColor: '#a0a8b8',
+          borderColor: '#2a3045',
+          borderWidth: 1,
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#4b5563', font: { size: 11 }, autoSkip: false, maxRotation: 0 },
+          grid: { color: 'rgba(255,255,255,0.03)' },
+          border: { color: '#1e2130' }
+        },
+        y: {
+          position: 'left',
+          ticks: { color: '#4b5563', font: { size: 11 }, callback: v => 'R$' + v + 'K' },
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          border: { color: '#1e2130' }
+        },
+        y1: {
+          position: 'right',
+          ticks: {
+            color: '#4b5563',
+            font: { size: 11 },
+            callback: v => v.toLocaleString('pt-BR')
+          },
+          grid: { drawOnChartArea: false },
+          border: { color: '#1e2130' }
+        }
+      }
+    }
+  });
+
+  // ── Doughnut chart ──
+  new Chart(document.getElementById('doughnutChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Orgânico','Pago','Direto','Social'],
+      datasets: [{
+        data: [38, 27, 20, 15],
+        backgroundColor: ['#3b82f6','#22c55e','#f59e0b','#f43f5e'],
+        borderColor: '#12151d',
+        borderWidth: 3,
+        hoverOffset: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '70%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1e2130',
+          titleColor: '#e2e4ea',
+          bodyColor: '#a0a8b8',
+          borderColor: '#2a3045',
+          borderWidth: 1,
+          callbacks: {
+            label: ctx => ' ' + ctx.label + ': ' + ctx.raw + '%'
+          }
+        }
+      }
+    }
+  });
+
+  // ── Tab switching (visual only) ──
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
